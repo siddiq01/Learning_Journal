@@ -7,4 +7,3 @@ python manage.py collectstatic --no-input
 python manage.py migrate
 
 # Add this line to create your admin automatically
-python create_admin.py
