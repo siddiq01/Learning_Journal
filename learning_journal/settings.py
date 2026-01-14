@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',  # Required for naturaltime filters
     'learning',
     'django_ckeditor_5',
+    'cloudinary_storage',  # Add this
+    'cloudinary',          # Add this
 ]
 
 MIDDLEWARE = [
@@ -132,7 +134,8 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+# CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+CKEDITOR_5_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 CKEDITOR_5_UPLOAD_FILE_VIEW_NAME = "ckeditor5_upload_file"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
