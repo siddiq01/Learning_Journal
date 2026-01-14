@@ -20,17 +20,17 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 # --- APPLICATION DEFINITION ---
 INSTALLED_APPS = [
+    'cloudinary_storage',  # Add this
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',          # Add this
     'django.contrib.humanize',  # Required for naturaltime filters
     'learning',
     'django_ckeditor_5',
-    'cloudinary_storage',  # Add this
-    'cloudinary',          # Add this
 ]
 
 MIDDLEWARE = [
@@ -101,12 +101,12 @@ CKEDITOR_5_CONFIGS = {
 WSGI_APPLICATION = 'learning_journal.wsgi.application'
 
 # --- DATABASE ---
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # --- AUTHENTICATION & REDIRECTS ---
 LOGIN_URL = 'login'
