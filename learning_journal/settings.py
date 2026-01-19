@@ -3,6 +3,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url  # Make sure this is imported at the top
 import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -150,7 +152,7 @@ CSRF_COOKIE_SECURE = not DEBUG
 # Ensure session is saved on every request to keep it fresh
 SESSION_SAVE_EVERY_REQUEST = True
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # --- DATABASE (Point to Supabase) ---
 DATABASES = {
@@ -182,6 +184,9 @@ FILE_UPLOAD_HANDLERS = [
     "django.core.files.uploadhandler.MemoryFileUploadHandler",
     "django.core.files.uploadhandler.TemporaryFileUploadHandler",
 ]
+
+# Increase memory limit for image POST requests
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 
 STORAGES = {
     "default": {
