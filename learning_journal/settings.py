@@ -152,7 +152,7 @@ CSRF_COOKIE_SECURE = not DEBUG
 # Ensure session is saved on every request to keep it fresh
 SESSION_SAVE_EVERY_REQUEST = True
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # --- DATABASE (Point to Supabase) ---
 DATABASES = {
