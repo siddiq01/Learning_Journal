@@ -8,7 +8,23 @@ from django.contrib import messages
 from .models import Subject, Topic, Project 
 from .forms import TopicForm 
 from .decorators import role_required
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import cloudinary.uploader
 
+@csrf_exempt
+def custom_upload_file(request):
+    if request.method == "POST" and request.FILES.get("upload"):
+        file = request.FILES["upload"]
+        try:
+            # Manually upload to Cloudinary
+            upload_result = cloudinary.uploader.upload(file)
+            return JsonResponse({
+                "url": upload_result["secure_url"]
+            })
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=400)
+    return JsonResponse({"error": "Invalid request"}, status=400)
 # --- AUTH & PUBLIC VIEWS ---
 
 @never_cache 

@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.contrib.staticfiles.storage import staticfiles_storage
+from learning.views import custom_upload_file # Import your new view
 
 # Import learning app views
 from learning import views as learning_views
@@ -30,6 +31,8 @@ urlpatterns = [
 
     # Learning App URLs
     path('', include('learning.urls')),
+
+    path("ckeditor5/image_upload/", custom_upload_file, name="ckeditor5_upload_file"),
 
     path('ckeditor5/', include('django_ckeditor_5.urls')),
 ]
